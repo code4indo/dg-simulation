@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Tata Kelola Kearsipan dengan Agentic AI</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Impor Three.js (gunakan CDN untuk contoh ini) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Opsional: OrbitControls untuk interaksi kamera -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <div id="simulation-info">
+        <h1>Simulasi Proses Indeks Ketersediaan Arsip</h1>
+        <p>Tahap Saat Ini: <span id="current-stage">Menunggu Mulai</span></p>
+        <p>Arsip Diproses: <span id="arsip-processed-count">0</span> / <span id="arsip-total-count">5</span></p>
+        <p>Arsip Tersedia (Memenuhi Kriteria): <span id="arsip-available-count">0</span></p>
+        <p>Indeks Ketersediaan Arsip: <span id="iku-result">-</span>%</p>
+        <button id="start-simulation">Mulai Simulasi</button>
+    </div>
+    <div id="log-panel">
+        <h2>Log Proses:</h2>
+        <ul id="log-list"></ul>
+    </div>
+    <div id="scene-container">
+        <!-- Canvas Three.js akan dimasukkan di sini oleh JavaScript -->
+    </div>
+    <script src="simulation.js"></script>
+</body>
+</html>

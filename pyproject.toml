@@ -1,0 +1,152 @@
+[tool.poetry]
+name = "metadata-curator-agent"
+version = "1.0.0"
+description = "AI Agent untuk Manajemen Metadata Arsip dengan Human-in-the-Loop menggunakan Google Gemini AI"
+authors = ["Your Name <your.email@domain.com>"]
+readme = "README.md"
+packages = [{include = "metadata_curator_agent"}]
+keywords = ["metadata", "ai", "archival", "data-governance", "gemini", "streamlit"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Information Technology",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+streamlit = "^1.39.0"
+google-generativeai = "^0.8.3"
+pandas = "^2.2.3"
+python-dotenv = "^1.0.1"
+PyPDF2 = "^3.0.1"
+python-docx = "^1.1.2"
+openpyxl = "^3.1.5"
+plotly = "^5.24.1"
+altair = "^5.4.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
+black = "^23.0.0"
+flake8 = "^6.0.0"
+mypy = "^1.5.0"
+pre-commit = "^3.4.0"
+jupyter = "^1.0.0"
+notebook = "^7.0.0"
+
+[tool.poetry.group.test.dependencies]
+pytest-mock = "^3.11.0"
+pytest-asyncio = "^0.21.0"
+factory-boy = "^3.3.0"
+faker = "^19.0.0"
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = "^1.5.0"
+mkdocs-material = "^9.2.0"
+mkdocstrings = "^0.22.0"
+
+[tool.poetry.scripts]
+metadata-curator = "metadata_curator_agent.main:main"
+enhanced-curator = "enhanced_app:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ['py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[[tool.mypy.overrides]]
+module = [
+    "streamlit.*",
+    "google.generativeai.*",
+    "PyPDF2.*",
+    "docx.*",
+    "plotly.*",
+    "altair.*"
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q --strict-markers --strict-config"
+testpaths = [
+    "tests",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+]
+
+[tool.coverage.run]
+source = ["metadata_curator_agent", "enhanced_app", "utils", "database"]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+    "setup.py",
+    "conftest.py"
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\bProtocol\):",
+    "@(abc\.)?abstractmethod",
+]
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203", "E501", "W503"]
+exclude = [
+    ".git",
+    "__pycache__",
+    "build",
+    "dist",
+    ".venv",
+    ".mypy_cache",
+    ".pytest_cache"
+]

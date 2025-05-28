@@ -1,0 +1,66 @@
+{
+    "name": "Metadata Curator Agent",
+    "version": "1.0.0",
+    "description": "AI Agent untuk Manajemen Metadata Arsip dengan Human-in-the-Loop",
+    "main_features": [
+        "Ekstraksi metadata otomatis dengan AI Gemini",
+        "Validasi metadata terhadap standar Dublin Core dan ISAD(G)",
+        "Human-in-the-loop validation system",
+        "Deteksi inkonsistensi batch metadata",
+        "Linked data generation",
+        "Reporting dan analytics dashboard"
+    ],
+    "supported_schemas": {
+        "dublin_core": {
+            "description": "15 elemen standar Dublin Core",
+            "use_case": "Metadata umum untuk digital resources"
+        },
+        "isad_g": {
+            "description": "International Standard Archival Description",
+            "use_case": "Deskripsi arsip sesuai standar internasional"
+        }
+    },
+    "ai_capabilities": {
+        "content_analysis": "Analisis konten dokumen untuk ekstraksi metadata",
+        "quality_assessment": "Penilaian kualitas metadata dengan scoring",
+        "suggestion_generation": "Saran perbaikan berdasarkan best practices",
+        "consistency_checking": "Deteksi inkonsistensi format dan naming"
+    },
+    "human_in_the_loop": {
+        "validation_interface": "Interface untuk validasi manual hasil AI",
+        "feedback_system": "Sistem feedback untuk continuous learning",
+        "quality_control": "Quality assurance workflow",
+        "customization": "Kustomisasi rules dan preferences"
+    },
+    "technical_specs": {
+        "ai_model": "Google Gemini 1.5 Flash",
+        "frontend": "Streamlit",
+        "database": "SQLite",
+        "file_formats": ["TXT", "PDF", "DOC", "DOCX", "JSON"],
+        "export_formats": ["CSV", "JSON", "JSON-LD"]
+    },
+    "data_governance_impact": {
+        "indeks_ketersediaan_arsip": {
+            "contribution": "Metadata berkualitas tinggi meningkatkan discoverability",
+            "metrics": ["Completeness score", "Consistency score", "Richness score"]
+        },
+        "indeks_pelayanan_informasi": {
+            "contribution": "Enhanced search dan retrieval capabilities",
+            "metrics": ["Search accuracy", "User satisfaction", "Response time"]
+        }
+    },
+    "installation": {
+        "windows": "install.bat",
+        "linux_mac": "install.sh",
+        "manual": "pip install -r requirements.txt"
+    },
+    "usage": {
+        "basic": "streamlit run metadata_curator_agent.py",
+        "enhanced": "streamlit run enhanced_app.py"
+    },
+    "configuration": {
+        "api_key": "Masukkan Gemini API key di sidebar aplikasi",
+        "schema_selection": "Pilih Dublin Core atau ISAD(G)",
+        "quality_thresholds": "Atur minimum confidence dan completeness scores"
+    }
+}
